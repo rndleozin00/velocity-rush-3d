@@ -1,0 +1,8 @@
+# Exemplo sem credenciais reais. Copie para .dev.vars, que está no .gitignore.
+# Preencha a chave somente no arquivo privado local ou no segredo do Worker.
+CARS_DATA_API_KEY=""
+# Defina datas UTC do período conforme a conferência privada de /usage.
+# A cota NÃO é renovada automaticamente quando essas datas expiram.
+QUOTA_PERIOD_START=""
+QUOTA_PERIOD_END=""
+QUOTA_INITIAL_USED="0"

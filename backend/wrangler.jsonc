@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "velocity-rush-cars-api",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-07-30",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": false },
+  "durable_objects": {
+    "bindings": [{ "name": "CARS_QUOTA", "class_name": "QuotaGuard" }],
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["QuotaGuard"] }],
+  "vars": {
+    "ALLOWED_ORIGINS": "[]",
+    "GLOBAL_PER_MINUTE": "18",
+    "CLIENT_PER_MINUTE": "6",
+    "QUOTA_PERIOD_LIMIT": "900",
+    "QUOTA_INITIAL_USED": "0",
+    "QUOTA_PERIOD_START": "",
+    "QUOTA_PERIOD_END": "",
+    "UPSTREAM_TIMEOUT_MS": "8000",
+  },
+  "env": {
+    "local": {
+      "name": "velocity-rush-cars-api-local",
+      "durable_objects": {
+        "bindings": [{ "name": "CARS_QUOTA", "class_name": "QuotaGuard" }],
+      },
+      "vars": {
+        "ALLOWED_ORIGINS": "[\"http://localhost:5173\",\"http://127.0.0.1:5173\"]",
+        "GLOBAL_PER_MINUTE": "18",
+        "CLIENT_PER_MINUTE": "6",
+        "QUOTA_PERIOD_LIMIT": "900",
+        "QUOTA_INITIAL_USED": "0",
+        "QUOTA_PERIOD_START": "",
+        "QUOTA_PERIOD_END": "",
+        "UPSTREAM_TIMEOUT_MS": "8000",
+      },
+    },
+  },
+}
